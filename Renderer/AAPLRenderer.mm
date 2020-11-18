@@ -75,13 +75,13 @@ using namespace MDK_NS;
     ra.device = (__bridge void*)_device;
     ra.cmdQueue = (__bridge void*)_commandQueue;
     ra.opaque = (__bridge void*)mtkView;
-    ra.currentRenderTarget = [](void* opaque){
+    ra.currentRenderTarget = [](const void* opaque){
         auto view = (__bridge MTKView*)opaque;
-        return (__bridge void*)view.currentDrawable.texture;
+        return (__bridge const void*)view.currentDrawable.texture;
     };
     player.setRenderAPI(&ra);
     player.setVideoDecoders({"VT", "FFmpeg"});
-    player.setMedia("/Users/wangbin/Movies/newyear.mp4");
+    player.setMedia("http://huan.mediacdn.cedock.net/ts/ceshi20151014/ceshi1.ts");
     player.setState(State::Playing);
     return self;
 }
